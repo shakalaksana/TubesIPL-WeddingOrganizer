@@ -30,110 +30,120 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Organizer - Dashboard Customer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/theme.css" rel="stylesheet">
-    <style>
-        .navbar-brand {
-            font-size: 20px;
-        }
-        .welcome-card {
-            background: linear-gradient(135deg, rgba(167, 139, 250, 0.95) 0%, rgba(244, 114, 182, 0.95) 55%, rgba(251, 113, 133, 0.95) 100%);
-            color: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 18px 60px rgba(17, 24, 39, 0.14);
-        }
-        .stat-card {
-            border-radius: 15px;
-            box-shadow: 0 18px 60px rgba(17, 24, 39, 0.10);
-            transition: transform 0.2s;
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-        }
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-        .btn-custom {
-            background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 20px;
-        }
-        .btn-custom:hover {
-            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-            color: white;
-        }
-    </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg wo-navbar">
+    <nav class="navbar navbar-expand-lg wo-navbar sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="customer_dashboard.php">🎉 Wedding Organizer</a>
-            <div class="navbar-nav ms-auto align-items-center flex-row gap-2">
-                <a href="customer_dashboard.php" class="btn btn-outline-light btn-sm">Home</a>
-                <a href="my_sewa.php" class="btn btn-outline-light btn-sm">Sewa Saya</a>
-                <a href="customer_profile.php" class="btn btn-outline-light btn-sm">Profil</a>
-                <span class="navbar-text text-white small d-none d-md-inline">Halo, <?php echo htmlspecialchars($customer['Nama_Pelanggan']); ?>!</span>
-                <a href="customer_logout.php" class="btn btn-light btn-sm text-dark">Logout</a>
+            <a class="navbar-brand animate-float" href="customer_dashboard.php">🎉 Wedding Organizer</a>
+            <button class="navbar-toggler btn-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto align-items-center gap-2">
+                    <a href="customer_dashboard.php" class="btn wo-btn-dark btn-sm active">Home</a>
+                    <a href="my_sewa.php" class="btn wo-btn-dark btn-sm">Sewa Saya</a>
+                    <a href="customer_profile.php" class="btn wo-btn-dark btn-sm">Profil</a>
+                    <span class="navbar-text text-white small d-none d-md-inline mx-2">
+                        Halo, <span
+                            class="text-primary fw-bold"><?php echo htmlspecialchars($customer['Nama_Pelanggan']); ?></span>!
+                    </span>
+                    <a href="customer_logout.php" class="btn wo-btn-primary btn-sm">Logout</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <div class="welcome-card">
-            <h2>Dashboard Customer</h2>
-            <p class="mb-0">Kelola penyewaan wedding Anda dengan mudah</p>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-md-4 mb-3">
-                <div class="card stat-card">
-                    <div class="card-body text-center">
-                        <h1 class="text-primary"><?php echo $total_sewa; ?></h1>
-                        <p class="text-muted mb-0">Total Sewa Wedding</p>
-                    </div>
+    <div class="container mt-5">
+        <div class="wo-card p-4 mb-5 animate-fade-in">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h2 class="mb-1">Dashboard Customer ✨</h2>
+                    <p class="text-muted mb-0">Selamat datang kembali! Kelola pernikahan impianmu di sini.</p>
                 </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="card stat-card">
-                    <div class="card-body text-center">
-                        <a href="sewa_wedding.php" class="btn btn-custom w-100">+ Sewa Wedding Baru</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <div class="card stat-card">
-                    <div class="card-body text-center">
-                        <a href="my_sewa.php" class="btn btn-outline-primary w-100">Lihat Sewa Saya</a>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <div
+                        class="p-3 rounded-4 bg-dark bg-opacity-50 border border-secondary border-opacity-25 d-inline-block">
+                        <small class="text-muted d-block text-uppercase" style="letter-spacing: 1px;">ID
+                            Pelanggan</small>
+                        <span class="fs-5 fw-bold text-white">#<?php echo $customer['ID_Pelanggan']; ?></span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="wo-card h-100 p-4 text-center animate-pop-in" style="animation-delay: 0.1s;">
+                    <div class="mb-3">
+                        <span class="display-4 fw-bold text-primary"><?php echo $total_sewa; ?></span>
+                    </div>
+                    <h5 class="text-white mb-0">Total Sewa Wedding</h5>
+                    <p class="text-muted small">Pesanan aktif Anda</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="wo-card h-100 p-4 text-center animate-pop-in" style="animation-delay: 0.2s;">
+                    <div class="mb-4" style="font-size: 3rem;">🛍️</div>
+                    <a href="sewa_wedding.php" class="btn wo-btn-primary w-100 stretched-link">
+                        + Sewa Wedding Baru
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="wo-card h-100 p-4 text-center animate-pop-in" style="animation-delay: 0.3s;">
+                    <div class="mb-4" style="font-size: 3rem;">📋</div>
+                    <a href="my_sewa.php" class="btn wo-btn-dark w-100 stretched-link">
+                        Lihat Riwayat Sewa
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row animate-fade-in" style="animation-delay: 0.4s;">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Informasi Akun</h5>
+                <div class="wo-card">
+                    <div class="card-header bg-transparent border-bottom border-secondary border-opacity-25 p-4">
+                        <h5 class="mb-0 text-white">👤 Informasi Akun</h5>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
+                    <div class="card-body p-4">
+                        <div class="row g-4">
                             <div class="col-md-6">
-                                <p><strong>Nama:</strong> <?php echo htmlspecialchars($customer['Nama_Pelanggan']); ?></p>
-                                <p><strong>Email:</strong> <?php echo htmlspecialchars($customer['Email']); ?></p>
-                                <p><strong>No. Telepon:</strong> <?php echo htmlspecialchars($customer['No_Telepon']); ?></p>
+                                <div class="mb-3">
+                                    <label class="text-muted small text-uppercase mb-1">Nama Lengkap</label>
+                                    <div class="fs-5 text-white">
+                                        <?php echo htmlspecialchars($customer['Nama_Pelanggan']); ?></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-muted small text-uppercase mb-1">Email</label>
+                                    <div class="fs-5 text-white"><?php echo htmlspecialchars($customer['Email']); ?>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="text-muted small text-uppercase mb-1">No. Telepon</label>
+                                    <div class="fs-5 text-white">
+                                        <?php echo htmlspecialchars($customer['No_Telepon']); ?></div>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <p><strong>Jenis Kelamin:</strong> <?php echo htmlspecialchars($customer['Jenis_Kelamin']); ?></p>
-                                <p><strong>Alamat:</strong> <?php echo htmlspecialchars($customer['Alamat']); ?></p>
-                                <p><strong>ID Pelanggan:</strong> <?php echo $customer['ID_Pelanggan']; ?></p>
+                                <div class="mb-3">
+                                    <label class="text-muted small text-uppercase mb-1">Jenis Kelamin</label>
+                                    <div class="fs-5 text-white">
+                                        <?php echo htmlspecialchars($customer['Jenis_Kelamin']); ?></div>
+                                </div>
+                                <div>
+                                    <label class="text-muted small text-uppercase mb-1">Alamat</label>
+                                    <div class="fs-5 text-white"><?php echo htmlspecialchars($customer['Alamat']); ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,4 +154,5 @@ $conn->close();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

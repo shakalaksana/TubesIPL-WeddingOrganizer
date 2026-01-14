@@ -1,55 +1,37 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Organizer - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/theme.css" rel="stylesheet">
-    <style>
-        .home-container {
-            border-radius: 20px;
-            padding: 50px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-        }
-        .home-container h1 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .home-container p {
-            color: #6c757d;
-            margin-bottom: 40px;
-        }
-        .btn-custom {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 18px;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: transform 0.2s;
-        }
-        .btn-custom:hover {
-            transform: translateY(-2px);
-        }
-    </style>
 </head>
+
 <body>
-    <div class="wo-center">
-        <div class="home-container wo-card">
-        <h1>🎉 Wedding Organizer</h1>
-        <p>Sistem Manajemen Penyewaan Wedding</p>
-        
-        <div class="d-grid gap-2">
-            <a href="login.php" class="btn wo-btn-dark btn-custom">Login Admin</a>
-            <a href="customer_login.php" class="btn wo-btn-primary btn-custom">Login Customer</a>
-            <a href="register.php" class="btn btn-outline-primary btn-custom">Registrasi Customer</a>
-        </div>
+    <div class="auth-container">
+        <div class="wo-card box-shadow p-5 text-center animate-fade-in" style="max-width: 500px; width: 100%;">
+            <div class="mb-4 animate-float" style="font-size: 4rem;">🎉</div>
+            <h1 class="hero-title mb-2" style="font-size: 2.5rem;">Wedding Organizer</h1>
+            <p class="hero-subtitle mb-4">Wujudkan Pernikahan Impianmu dengan Mudah & Menyenangkan!</p>
+
+            <div class="d-grid gap-3">
+                <a href="customer_login.php" class="btn wo-btn-primary btn-lg">
+                    Login Customer 🚀
+                </a>
+                <a href="register.php" class="btn wo-btn-dark">
+                    Belum punya akun? Daftar ✨
+                </a>
+                <div class="border-top border-secondary my-2 opacity-25"></div>
+                <a href="login.php" class="btn btn-sm text-muted text-decoration-none">
+                    Login sebagai Admin 🔒
+                </a>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

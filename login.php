@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($result && $result->num_rows > 0) {
                 $admin = $result->fetch_assoc();
-                $stored_password = (string)($admin['Password'] ?? '');
+                $stored_password = (string) ($admin['Password'] ?? '');
 
                 $is_valid = false;
                 if ($stored_password !== '' && password_verify($password, $stored_password)) {
@@ -47,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
 
                 if ($is_valid) {
-                    $_SESSION['ID_Admin'] = (int)$admin['ID_Admin'];
-                    $_SESSION['Nama'] = (string)$admin['Nama'];
+                    $_SESSION['ID_Admin'] = (int) $admin['ID_Admin'];
+                    $_SESSION['Nama'] = (string) $admin['Nama'];
                     $stmt->close();
                     $conn->close();
                     header("Location: dashboard.php");
@@ -72,117 +72,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Organizer - Login</title>
+    <title>Wedding Organizer - Login Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/theme.css" rel="stylesheet">
-    <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-
-    .login-container {
-        padding: 30px 40px;
-        border-radius: 16px;
-        max-width: 420px;
-        width: 100%;
-        text-align: center;
-    }
-
-    .login-header {
-        margin-bottom: 25px;
-    }
-
-    .login-header h1 {
-        color: #333;
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .login-header p {
-        color: #6c757d;
-        font-size: 14px;
-        margin-top: 5px;
-    }
-
-    .form-group label {
-        color: #333;
-        font-weight: bold;
-        text-align: left;
-        display: block;
-    }
-
-    .form-control {
-        border: 1px solid rgba(148, 163, 184, 0.7);
-        border-radius: 8px;
-    }
-
-    .btn-login {
-        background: linear-gradient(135deg, #111827 0%, #374151 100%);
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: bold;
-        width: 100%;
-        transition: background-color 0.3s ease-in-out;
-    }
-
-    .btn-login:hover {
-        background: linear-gradient(135deg, #0b1220 0%, #1f2937 100%);
-    }
-
-    .footer-text {
-        margin-top: 15px;
-        font-size: 12px;
-        color: #6c757d;
-    }
-
-    .error-message {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
-        padding: 15px;
-        margin-top: 20px;
-        border-radius: 8px;
-        font-size: 16px;
-        text-align: center;
-    }
-    </style>
 </head>
 
 <body>
-    <div class="login-container wo-card">
-        <div class="login-header">
-            <h1>Wedding Organizer</h1>
-            <p>Login untuk mengakses sistem admin</p>
-        </div>
-
-        <!-- Menampilkan pesan kesalahan jika ada -->
-        <?php
-        if (isset($_SESSION['error_message'])) {
-            echo '<div class="error-message">' . $_SESSION['error_message'] . '</div>';
-            unset($_SESSION['error_message']); // Menghapus pesan kesalahan setelah ditampilkan
-        }
-        ?>
-
-        <form action="login.php" method="POST" id="login-form">
-            <div class="form-group mb-3">
-                <label for="Username">Username:</label>
-                <input type="text" class="form-control" id="Username" name="Username"
-                    placeholder="Masukkan username admin" required>
+    <div class="auth-container">
+        <div class="wo-card auth-card p-5 animate-fade-in">
+            <div class="text-center mb-4">
+                <div class="mb-3 animate-float" style="font-size: 3rem;">🔐</div>
+                <h2 class="text-primary mb-1">Login Admin</h2>
+                <p class="text-muted">Akses panel kontrol sistem</p>
             </div>
-            <div class="form-group mb-3">
-                <label for="Password">Password:</label>
-                <input type="password" class="form-control" id="Password" name="Password" placeholder="Masukkan password" required>
+
+            <!-- Menampilkan pesan kesalahan jika ada -->
+            <?php
+            if (isset($_SESSION['error_message'])) {
+                echo '<div class="alert alert-danger bg-danger bg-opacity-10 border-danger border-opacity-25 text-danger">' . $_SESSION['error_message'] . '</div>';
+                unset($_SESSION['error_message']); // Menghapus pesan kesalahan setelah ditampilkan
+            }
+            ?>
+
+            <form action="login.php" method="POST" id="login-form">
+                <div class="mb-3">
+                    <label for="Username" class="form-label text-muted small text-uppercase">Username</label>
+                    <input type="text" class="form-control" id="Username" name="Username" placeholder="Nama pengguna"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="Password" class="form-label text-muted small text-uppercase">Password</label>
+                    <input type="password" class="form-control" id="Password" name="Password"
+                        placeholder="Sandi rahasia" required>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn wo-btn-dark">Akses Dashboard ⚡</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <a href="index.php" class="text-muted text-decoration-none small">← Kembali ke Home</a>
             </div>
-            <button type="submit" class="btn btn-login">Login</button>
-        </form>
-        <div class="footer-text">
         </div>
     </div>
 

@@ -1,6 +1,13 @@
-/vendor
-/node_modules
-.env
+# OS / IDE
 .DS_Store
+Thumbs.db
 .vscode/
-*.log
+.idea/
+
+# Database Config (Secure)
+# Comment this out if you push to a private repo and want config included
+# config.php
+
+# PHP
+vendor/
+hash.txt
