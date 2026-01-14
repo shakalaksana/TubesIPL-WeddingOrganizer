@@ -1,0 +1,95 @@
+:root{
+  --wo-bg-1: #fff1f2;
+  --wo-bg-2: #eef2ff;
+  --wo-bg-3: #fdf2f8;
+  --wo-accent-1: #a78bfa;
+  --wo-accent-2: #f472b6;
+  --wo-accent-3: #fb7185;
+  --wo-dark-1: #111827;
+  --wo-dark-2: #1f2937;
+  --wo-glass: rgba(255, 255, 255, 0.88);
+  --wo-border: rgba(255, 255, 255, 0.70);
+  --wo-shadow: 0 18px 60px rgba(17, 24, 39, 0.12);
+}
+
+body{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(236, 72, 153, 0.18) 0%, rgba(236, 72, 153, 0) 38%),
+    radial-gradient(circle at 88% 12%, rgba(167, 139, 250, 0.18) 0%, rgba(167, 139, 250, 0) 40%),
+    radial-gradient(circle at 80% 85%, rgba(251, 113, 133, 0.10) 0%, rgba(251, 113, 133, 0) 42%),
+    linear-gradient(135deg, var(--wo-bg-1) 0%, var(--wo-bg-2) 45%, var(--wo-bg-3) 100%);
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+}
+
+.wo-center{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.wo-card{
+  background: var(--wo-glass);
+  border: 1px solid var(--wo-border);
+  border-radius: 16px;
+  box-shadow: var(--wo-shadow);
+  backdrop-filter: blur(10px);
+}
+
+.wo-navbar{
+  background: linear-gradient(135deg, var(--wo-accent-1) 0%, var(--wo-accent-2) 55%, var(--wo-accent-3) 100%);
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.10);
+}
+
+.wo-navbar .navbar-brand{
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.wo-btn-primary{
+  background: linear-gradient(135deg, var(--wo-accent-1) 0%, var(--wo-accent-2) 100%);
+  border: none;
+  color: #fff;
+}
+.wo-btn-primary:hover{
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  color: #fff;
+}
+
+.wo-btn-dark{
+  background: linear-gradient(135deg, var(--wo-dark-1) 0%, #374151 100%);
+  border: none;
+  color: #fff;
+}
+.wo-btn-dark:hover{
+  background: linear-gradient(135deg, #0b1220 0%, var(--wo-dark-2) 100%);
+  color: #fff;
+}
+
+.wo-badge-pill{
+  border-radius: 9999px;
+}
+
+.wo-section-title{
+  font-weight: bold;
+  color: rgba(17, 24, 39, 0.78);
+}
+
+.wo-muted{
+  color: rgba(17, 24, 39, 0.55);
+}
+
+.wo-table thead th{
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: rgba(17, 24, 39, 0.60);
+}
+
+.wo-form-label{
+  font-weight: bold;
+  color: rgba(17, 24, 39, 0.80);
+}
+
